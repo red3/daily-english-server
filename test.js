@@ -12,4 +12,14 @@ var track = {
     test: 'xxx'
 }
 
+db.fetch(1)
+    .then(function (results) {
+        if(results.length == 0) {
+            console.log('pop nothing from todo database.')
+        } else {
+            var track = results[0];
+            console.log(JSON.stringify(track))
+        }
+    })
+
 // db.deleteAll(1);

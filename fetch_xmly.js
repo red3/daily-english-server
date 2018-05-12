@@ -6,7 +6,13 @@ var db = new DB();
 
 var options = {
     url: 'http://140.207.215.242/mobile/v1/album/ts-1509945693482?albumId=4486765&device=iPhone&pageSize=10&source=0&trackId=55806539',
-    headers: process.env.XMLY_Header
+    headers: {
+        'Cookie': process.env.XMLY_Cookie,
+        'x-viewId': 'XMSoundFeedViewController_UIView',
+        'User-Agent': 'ting_v6.3.33_c5(CFNetwork, iOS 11.1, iPhone9,1)',
+        'Accept-Language': 'en-us',
+        'x-abtest-bucketIds': '9,12'
+    }
 };
 
 function fetchData () {

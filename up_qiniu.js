@@ -1,7 +1,16 @@
+//require('dotenv').config()
 var request = require('request');
 var fs = require('fs');
 var path = require('path');
-var header = process.env.LIZHI_Header;
+var header = {
+    "X-Requested-With": "XMLHttpRequest",
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36",
+    "Origin": "https://nj.lizhi.fm",
+    "Referer": "https://nj.lizhi.fm/radio/upload",
+    "Accept": "application/json, text/javascript, */*; q=0.01",
+    "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
+    "Cookie": process.env.LIZHI_Cookie
+};
 
 
 // 1. get token
@@ -27,6 +36,7 @@ function getToken() {
                 console.log(body);  
                 reject('error occur when get upload token');            
             }
+
             var res = JSON.parse(body);
             if(res.code == 0) {
                 resolve(res.ret);
@@ -38,6 +48,8 @@ function getToken() {
 function upload_to_qiniu (ret, track) {
     return new Promise(function(resolve, reject) {
         var url = track.url;
+        
+        console.log("track.url"+url);
         var fileName = path.basename(url);
         var formData = {
             name: fileName,

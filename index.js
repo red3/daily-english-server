@@ -14,5 +14,6 @@ var k = schedule.scheduleJob('0 18,22,42 06,07,08 * * *', function(){
   queue.work();
 });
 
-xmly.work();
+// xmly.work();
+queue.work();
 
