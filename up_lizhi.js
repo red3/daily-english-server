@@ -1,8 +1,15 @@
 var request = require('request');
 var fs = require('fs');
 var path = require('path');
-var header = process.env.LIZHI_Header;
-
+var header = {
+    "X-Requested-With": "XMLHttpRequest",
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36",
+    "Origin": "https://nj.lizhi.fm",
+    "Referer": "https://nj.lizhi.fm/radio/upload",
+    "Accept": "application/json, text/javascript, */*; q=0.01",
+    "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
+    "Cookie": process.env.LIZHI_Cookie
+};
 
 var formData = {
     // Pass a simple key-value pair
