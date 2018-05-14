@@ -15,7 +15,7 @@ function do_your_own_work() {
     .then(function (results) {
         if(results.length == 0) {
             console.log('pop nothing from todo database.')
-            return false;
+            return true;
         } else {
             var track = results[0];
             return consume_track(track);            
@@ -34,7 +34,9 @@ function consume_track (track) {
         return ret;
 
     }, error => {
-        console.log('upload to qiniu fail,', error);    
+        console.log('upload to qiniu fail,', error);  
+        return Promise.reject(error);
+  
     })
     .then(function (ret) {
         return lizhi.upload(ret.key, track);
@@ -69,9 +71,11 @@ function consume_track (track) {
     .then(function(ret) {
         // success push msg to wx
         console.log('push to weixin success');
+        return true;
     }, function (error) {
         // fail to push msg to wx
         console.log('push to weixin failure, ', error);
+        return error;
     })
 }
 
@@ -80,7 +84,7 @@ function Queue () {
 }
 
 Queue.prototype.work = function () {
-    do_your_own_work();
+    return do_your_own_work();
 }
 
 module.exports = Queue;

@@ -12,14 +12,23 @@ var track = {
     test: 'xxx'
 }
 
-db.fetch(1)
+
+
+function transformTracksFromTodoToDone () {
+    db.fetch(1)
     .then(function (results) {
         if(results.length == 0) {
             console.log('pop nothing from todo database.')
         } else {
-            var track = results[0];
-            console.log(JSON.stringify(track))
+            // var track = results[0];
+            // console.log(JSON.stringify(track))
+            results.forEach(element => {
+                db.insert(2, element);
+            });
+            db.deleteAll(1);
         }
-    })
+})
+}
 
+transformTracksFromTodoToDone();
 // db.deleteAll(1);

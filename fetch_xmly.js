@@ -92,7 +92,7 @@ function download(element) {
 
 
 function do_your_own_work() {
-    fetchData()
+    return fetchData()
     .then(elements => {
      
         var maped = elements.map(function (element) {
@@ -126,10 +126,12 @@ function do_your_own_work() {
     })
     .then(function (success) {
         console.log('fetch xmly job done');
+        return success;
         // process.exit(0);
         
     }, function (error) {
         console.log('fetch xmly job failure, ', error);
+        return error;
         // process.exit(1);   
     });
 
@@ -141,7 +143,7 @@ function Ximayala () {
 }
     
 Ximayala.prototype.work = function () {
-    do_your_own_work();
+    return do_your_own_work();
 }
     
 module.exports = Ximayala;
