@@ -63,7 +63,7 @@ function consume_track (track) {
         console.log('local audio file deleted');
         console.log('job done');
         // push msg to wx
-        weixin.push_msg(track);
+        return weixin.push_msg(track);
     }, function (error) {
         console.log('job failure : ', error);
         return Promise.reject(error);

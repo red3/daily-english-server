@@ -1,6 +1,10 @@
+require('dotenv').config()
 var DB = require('./db.js');
 
 var db = new DB();
+var Weixin = require('./wx_notification.js');
+var weixin = new Weixin();
+
 
 
 var track = {
@@ -30,5 +34,14 @@ function transformTracksFromTodoToDone () {
 })
 }
 
-transformTracksFromTodoToDone();
+
+
+// transformTracksFromTodoToDone();
 // db.deleteAll(1);
+
+weixin.push_msg(track)
+.then(function (result) {
+    console.log('done');
+}, function (error) {
+    console.log(error);
+})
