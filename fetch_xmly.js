@@ -76,6 +76,7 @@ function download(element) {
 
     return new Promise(function(resolve, reject) {
         console.log('downloading the ' + element.title);
+        console.log('downloading the ' + element.url);
         var url = element.url;
         // var url = 'http://audio.xmcdn.com/group35/M06/68/68/wKgJnVoMrZKx2JLJAAkeGSNrGPU152.m4a';
         var fileName = path.basename(url);
