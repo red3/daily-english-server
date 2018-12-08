@@ -97,7 +97,13 @@ function do_your_own_work() {
      
         var maped = elements.map(function (element) {
             // assign url property
-            element.url = element.playPathAacv224;
+            if (element.playPathAacv224.length > 0) {
+                element.url = element.playPathAacv224
+            } else if (element.playPathAacv164.length > 0) {
+                element.url = element.playPathAacv164
+            } else {
+                element.url = element.playUrl64
+            }
             return check_exist(element);
         }) 
         return Promise.all(maped);
