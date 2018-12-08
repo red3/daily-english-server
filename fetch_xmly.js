@@ -5,7 +5,7 @@ var DB = require('./db.js');
 var db = new DB();
 
 var options = {
-    url: 'http://140.207.215.245/mobile/v1/album/ts-1531191170386?albumId=4486765&device=iPhone&pageSize=10&source=0',
+    url: 'http://140.207.215.242/mobile/v1/album/ts-1509945693482?albumId=4486765&device=iPhone&pageSize=10&source=0',
     headers: {
         'Cookie': process.env.XMLY_Cookie,
         'User-Agent': 'ting_v6.3.33_c5(CFNetwork, iOS 11.1, iPhone9,1)',
